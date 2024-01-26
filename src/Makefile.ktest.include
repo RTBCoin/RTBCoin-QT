@@ -1,0 +1,43 @@
+TESTS += rtb-test
+bin_PROGRAMS += rtb-test
+
+# tool for generating our public parameters
+rtb_test_SOURCES = \
+    test-rtb/main.cpp \
+    test-rtb/testutils.cpp \
+    test-rtb/test_cryptoconditions.cpp \
+    test-rtb/test_coinimport.cpp \
+    test-rtb/test_eval_bet.cpp \
+    test-rtb/test_eval_notarisation.cpp \
+    test-rtb/test_parse_notarisation.cpp \
+    test-rtb/test_buffered_file.cpp \
+    test-rtb/test_sha256_crypto.cpp \
+    test-rtb/test_script_standard_tests.cpp \
+    test-rtb/test_multisig_tests.cpp \
+    test-rtb/test_merkle_tests.cpp \
+    test-rtb/test_addrman.cpp \
+    test-rtb/test_netbase_tests.cpp \
+    test-rtb/test_events.cpp \
+    test-rtb/test_hex.cpp \
+    test-rtb/test_haraka_removal.cpp \
+    test-rtb/test_oldhash_removal.cpp \
+    test-rtb/test_kmd_feat.cpp \
+    test-rtb/test_legacy_events.cpp
+
+if TARGET_WINDOWS
+rtb_test_SOURCES += test-rtb/rtb-test-res.rc
+endif
+
+rtb_test_CPPFLAGS = $(rtbd_CPPFLAGS)
+
+rtb_test_LDADD = -lgtest $(rtbd_LDADD)
+
+rtb_test_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) -static
+rtb_test_LIBTOOLFLAGS = --tag CXX
+
+yellow := $(shell tput setaf 11)
+reset := $(shell tput sgr0)
+$(info $(yellow)[ Decker ]$(reset) Check the $(yellow)rtb_test$(reset) dependencies ...)
+
+$(info $(yellow)$$rtbd_LDADD$(reset) is [$(rtbd_LDADD)])
+$(info $(yellow)$$rtb_test_LDADD$(reset) is [${rtb_test_LDADD}])

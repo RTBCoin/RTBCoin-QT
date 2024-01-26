@@ -1,0 +1,2 @@
+#!/bin/bash
+./rtb-cli -ac_name=KSB $1 $2 $3 $4 $5 $6

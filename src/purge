@@ -1,0 +1,5 @@
+rm -rf ~/.rtb/$1/chainstate
+rm -rf ~/.rtb/$1/database
+rm -rf ~/.rtb/$1/blocks
+rm -rf ~/.rtb/$1/rtbstate
+

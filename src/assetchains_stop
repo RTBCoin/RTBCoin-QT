@@ -1,0 +1,7 @@
+#!/bin/bash
+set -eo pipefail
+rtb_cli='./rtb-cli'
+
+./listassetchains | while read chain; do
+  $rtb_cli --ac_name=$chain stop
+done
